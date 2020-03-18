@@ -12,6 +12,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "TMDB_API_KEY", "\"6cdf5a4dc1ced2d5de9810229ad3b7dc/\"")
     }
 
     buildTypes {
