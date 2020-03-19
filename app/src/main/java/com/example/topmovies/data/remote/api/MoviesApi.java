@@ -10,7 +10,7 @@ import retrofit2.http.QueryMap;
 
 public interface MoviesApi {
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     Call<TopMoviesBean> getTopMovies(@QueryMap Map<String, String> params);
 
 }

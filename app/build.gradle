@@ -15,7 +15,7 @@ android {
 
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         buildConfigField("String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w780\"")
-        buildConfigField("String", "TMDB_API_KEY", "\"6cdf5a4dc1ced2d5de9810229ad3b7dc/\"")
+        buildConfigField("String", "TMDB_API_KEY", "\"6cdf5a4dc1ced2d5de9810229ad3b7dc\"")
     }
 
     buildTypes {
@@ -54,6 +54,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "com.google.android.material:material:1.1.0"
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'

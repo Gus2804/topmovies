@@ -162,4 +162,23 @@ public class MovieBean {
         this.releaseDate = releaseDate;
     }
 
+    @Override
+    public String toString() {
+        return "MovieBean{" +
+                "popularity=" + popularity +
+                ", voteCount=" + voteCount +
+                ", video=" + video +
+                ", posterPath='" + posterPath + '\'' +
+                ", id=" + id +
+                ", adult=" + adult +
+                ", backdropPath='" + backdropPath + '\'' +
+                ", originalLanguage='" + originalLanguage + '\'' +
+                ", originalTitle='" + originalTitle + '\'' +
+                ", genreIds=" + genreIds +
+                ", title='" + title + '\'' +
+                ", voteAverage=" + voteAverage +
+                ", overview='" + overview + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                '}';
+    }
 }

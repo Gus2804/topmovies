@@ -15,9 +15,9 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 public interface MovieDao {
 
     @Insert(onConflict = REPLACE)
-    void save(MoviePoster moviePoster);
+    void save(MoviePoster... moviePosters);
 
-    @Query("SELECT * FROM movie_posters")
+    @Query("SELECT * FROM movie_posters ORDER BY `order`")
     LiveData<List<MoviePoster>> getPosters();
 
 }

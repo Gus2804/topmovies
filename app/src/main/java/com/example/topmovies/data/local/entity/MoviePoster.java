@@ -12,17 +12,20 @@ public class MoviePoster implements Parcelable {
     private int id;
     private String title;
     private String posterImage;
+    private int order;
 
-    public MoviePoster(int id, String title, String posterImage) {
+    public MoviePoster(int id, String title, String posterImage, int order) {
         this.id = id;
         this.title = title;
         this.posterImage = posterImage;
+        this.order = order;
     }
 
     protected MoviePoster(Parcel in) {
         id = in.readInt();
         title = in.readString();
         posterImage = in.readString();
+        order = in.readInt();
     }
 
     @Override
@@ -30,6 +33,7 @@ public class MoviePoster implements Parcelable {
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(posterImage);
+        dest.writeInt(order);
     }
 
     @Override
@@ -59,6 +63,23 @@ public class MoviePoster implements Parcelable {
 
     public void setPosterImage(String posterImage) {
         this.posterImage = posterImage;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    @Override
+    public String toString() {
+        return "MoviePoster{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", posterImage='" + posterImage + '\'' +
+                '}';
     }
 
     public static final Creator<MoviePoster> CREATOR = new Creator<MoviePoster>() {

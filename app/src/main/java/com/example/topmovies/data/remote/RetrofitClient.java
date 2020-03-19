@@ -1,17 +1,16 @@
 package com.example.topmovies.data.remote;
 
+import android.util.Log;
+
 import com.example.topmovies.BuildConfig;
+import com.example.topmovies.data.remote.api.MoviesApi;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.HttpUrl;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
@@ -43,7 +42,7 @@ public class RetrofitClient {
                     Request request = chain.request().newBuilder().url(url).build();
                     return chain.proceed(request);
                 })
-                .addInterceptor(new HttpLoggingInterceptor())
+                .addInterceptor(logging)
                 .build();
 
         retrofit = new Retrofit.Builder()
@@ -53,6 +52,8 @@ public class RetrofitClient {
                 .build();
     }
 
-
+    public MoviesApi getMoviesApi() {
+        return retrofit.create(MoviesApi.class);
+    }
 
 }
