@@ -1,20 +1,17 @@
 package com.example.topmovies.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.topmovies.R;
-import com.example.topmovies.data.Resource;
 import com.example.topmovies.data.local.MovieDatabase;
 import com.example.topmovies.data.local.entity.MoviePoster;
 import com.example.topmovies.data.remote.RetrofitClient;
@@ -23,15 +20,12 @@ import com.example.topmovies.ui.adapter.MoviesAdapter;
 import com.example.topmovies.ui.viewmodel.CarouselViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MoviesAdapter.OnItemClickListener {
 
     @BindView(R.id.vp_movies) ViewPager2 moviesPager;
     @BindView(R.id.cnt_parent) ConstraintLayout parent;
@@ -69,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 case ERROR:
                     progress.setVisibility(View.GONE);
                     Snackbar snackbar = Snackbar.make(parent, listResource.getErrorMessage(), Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setAction("Reintentar", v -> {
+                    snackbar.setAction(R.string.btn_retry, v -> {
                         snackbar.dismiss();
                         viewModel.startGetPosters();
                     });
@@ -86,5 +80,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewModel.startGetPosters();
+    }
+
+    @Override
+    public void onItemClick(MoviePoster poster) {
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra(MovieDetailActivity.EXTRA_MOVIE_POSTER, poster);
+        startActivity(intent);
     }
 }

@@ -29,4 +29,8 @@ public class MoviesAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return posters.size();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(MoviePoster poster);
+    }
 }

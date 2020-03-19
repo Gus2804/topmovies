@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Top Movies</string>
+    <string name="label_overview">Sinopsis</string>
+    <string name="label_belong">Pertenece a:</string>
+    <string name="btn_retry">Reintentar</string>
+
+    <string name="template_original_title">Título original: %s</string>
+    <string name="template_year">Año: %s</string>
+    <string name="template_duration">Duración: %s</string>
+
+    <string name="template_minutes">%d min</string>
+
+    <plurals name="template_genres">
+        <item quantity="one">Género: %s</item>
+        <item quantity="other">Géneros: %s</item>
+    </plurals>
 </resources>
